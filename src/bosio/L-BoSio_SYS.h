@@ -2,6 +2,14 @@
 #include <map>
 #include <list>
 
+enum LBoSio_APIcode{
+    CH, // CHHC (CHeck) 패킷 점검
+    MK, // MKKM (MaKe) 요소 생성 (CH 전송 필수)
+    FX, // FXXF (FiX) 요소 수정 (CH 전송 필수)
+    EV, // EVVE (EVent) 이벤트 요소 사용 (CH 전송 필수)
+    DT, // DTTD (DaTa) 데이터 요소 전송 (CH 전송 필수)
+};
+
 class L_BoSio_Space; // 스페이스 정보
 class L_BoSio_Comp; // 컴포넌트 정보
 class L_BoSio_Event; // 이벤트 정보
@@ -57,6 +65,8 @@ class Comp_3D{
 class L_BoSio_Event{
     public:
         L_BoSio_Event();
+        void Event_Running();
+        ~L_BoSio_Event();
     private:
         std::string EventName;
         std::string EventNeeds;
@@ -67,3 +77,7 @@ class Vertex_One{
         float X1, X2, X3, Y1, Y2, Y3, Z1, Z2, Z3; // 꼭짓점 위치
         Vertex_One *Edge12, *Edge23, *Edge13;
 };
+
+void LBoSio_CreateScreen();
+
+void All_exit();
